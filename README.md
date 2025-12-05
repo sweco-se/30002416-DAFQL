@@ -1,9 +1,6 @@
 # GraphQL FME-Utilities for datafordeler.dk 
 
-Demos from webinar 
-
-#SkiftRESTud – få GraphQL-adgang till DAF med FME
-2025-08-28
+## Demos from webinar 2025-08-28 #SkiftRESTud – få GraphQL-adgang till DAF med FME
 
 https://dataflow.center/webinars
 
