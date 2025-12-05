@@ -6,3 +6,6 @@ Demos from webinar
 2025-08-28
 
 https://dataflow.center/webinars
+
+Demofiles:
+https://github.com/sweco-se/30002416-DAFQL/blob/main/demos/demo_1-alt-json-escape.fmw
