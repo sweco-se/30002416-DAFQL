@@ -1,8 +1,10 @@
 # GraphQL FME-Utilities for datafordeler.dk 
 
-## Documentation for FME Hub Transformers DAF2_SchemaInfo and DAF2_GEODKV_Bygning_BBR_Bygning_DAR_Husnummer
+## Documentation for FME Hub Transformers 
++ DAF2_SchemaInfo
++ DAF2_GEODKV_Bygning_BBR_Bygning_DAR_Husnummer
 
-## Demos from webinar 2025-08-28 #SkiftRESTud – få GraphQL-adgang till DAF med FME
+## Demos from webinar 2025-08-28 '#SkiftRESTud – få GraphQL-adgang till DAF med FME'
 
 https://dataflow.center/webinars
 
