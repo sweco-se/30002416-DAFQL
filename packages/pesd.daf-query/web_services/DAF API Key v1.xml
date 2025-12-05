@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ImportExportData>
+
+  <version>4</version>
+
+  <header>ALkljFI6diT4F06btnq4X6oAAAAJTAAAAgAAAAEAAAA=</header>
+
+  <webservices>
+    <webservice>
+      <authentication>
+        <type>TOKEN</type>
+        <service_name>sepesd.daf-query.DAF API Key v1</service_name>
+        <version>1</version>
+        <help_url></help_url>
+        <description></description>
+        <markdown_description></markdown_description>
+        <connection_description></connection_description>
+        <markdown_connection_description></markdown_connection_description>
+        <verify_ssl_certificate_default>true</verify_ssl_certificate_default>
+        <access_token_request_format></access_token_request_format>
+        <token_format></token_format>
+        <access_token_url></access_token_url>
+        <authorization_header_format></authorization_header_format>
+        <token_item_name>apiKey=[API_KEY]</token_item_name>
+        <expiry_object_key></expiry_object_key>
+        <expiry_time_format>
+          <expiry_type>0</expiry_type>
+          <expiry_format></expiry_format>
+        </expiry_time_format>
+        <use_bearer_token></use_bearer_token>
+        <use_query_string>yes</use_query_string>
+        <nc_gui_fields>
+          <nc_gui_field>
+            <field_name>API_KEY</field_name>
+            <gui_line>GUI TEXT API_KEY API Key</gui_line>
+          </nc_gui_field>
+        </nc_gui_fields>
+        <nc_header_fields>
+          <nc_header_key>Accept</nc_header_key>
+          <nc_header_val>application/json</nc_header_val>
+          <nc_header_key>Content-Type</nc_header_key>
+          <nc_header_val>application/x-www-form-urlencoded</nc_header_val>
+        </nc_header_fields>
+      </authentication>
+    </webservice>
+  </webservices>
+  <derivedwebservices/>
+  <named_connections/>
+</ImportExportData>

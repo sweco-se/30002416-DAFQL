@@ -1,0 +1,17 @@
+fpkg_version: 1
+uid: daf-query
+publisher_uid: pesd
+name: DAF GraphQL Query
+description: Query Datafordeler using GraphQL.
+version: 0.1.0
+minimum_fme_build: 24158
+author:
+  name: Peter Segerstedt
+package_content:
+  transformers:
+    - name: DafGQLQuery
+      version: 1
+  python_packages:
+    - name: daf_gqlquery
+  web_services:
+      - name: DAF API Key v1.xml

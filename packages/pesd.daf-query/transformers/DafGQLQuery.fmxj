@@ -1,0 +1,159 @@
+{
+  "info" : {
+    "name" : "pesd.daf-query.DafGQLQuery",
+    "categories" : [ "Integrations" ],
+    "comments" : [ "" ]
+  },
+  "versions" : [
+    {
+      "version" : 1,
+      "changeLog" : [ "Initial version of transformer" ],
+      "form" : {
+        "parameters" : [
+          {
+            "name" : "TRANSFORMER_GROUP",
+            "prompt" : "",
+            "valueType" : "string",
+            "required" : false,
+            "defaultValue" : "",
+            "type" : "group",
+            "parameters" : [
+              {
+                "name" : "XFORMER_NAME",
+                "prompt" : "Transformer Name",
+                "valueType" : "string",
+                "defaultValue" : "pesd.daf-query.DafGQLQuery",
+                "type" : "text"
+              }
+            ]
+          },
+          {
+            "name" : "PARAMETERS_GROUP",
+            "prompt" : "Parameters",
+            "valueType" : "string",
+            "required" : false,
+            "defaultValue" : "",
+            "type" : "group",
+            "parameters" : [
+              {
+                "name" : "___XF_CONNECTION",
+                "prompt" : "Web Connection",
+                "showPrompt" : true,
+                "valueType" : "string",
+                "required" : true,
+                "supportedValueTypes" : [ "expression", "globalParameter" ],
+                "choiceSettings" : {
+                  "choiceSet" : "webConnections",
+                  "services" : [ "sepesd.dafql.DAF API Key v1" ]
+                },
+                "type" : "dropdown"
+              },
+              {
+                "name" : "___XF_REGISTER",
+                "prompt" : "Register",
+                "showPrompt" : true,
+                "valueType" : "string",
+                "required" : true,
+                "choiceSettings" : {
+                  "sort" : "naturalSort",
+                  "choices" : [
+                    { "display" : "BBR", "value" : "https://graphql.datafordeler.dk/BBR/v1" },
+                    { "display" : "DAGI", "value" : "https://graphql.datafordeler.dk/DAGI/v1" },
+                    { "display" : "DAR", "value" : "https://graphql.datafordeler.dk/DAR/v1" },
+                    { "display" : "DHMHoejdekurver", "value" : "https://graphql.datafordeler.dk/DHMHoejdekurver/v1" },
+                    { "display" : "DHMOprindelse", "value" : "https://graphql.datafordeler.dk/DHMOprindelse/v1" },
+                    { "display" : "DS", "value" : "https://graphql.datafordeler.dk/DS/v1" },
+                    { "display" : "EBR", "value" : "https://graphql.datafordeler.dk/EBR/v1" },
+                    { "display" : "FIKSPUNKT", "value" : "https://graphql.datafordeler.dk/FIKSPUNKT/v1" },
+                    { "display" : "GEODKV", "value" : "https://graphql.datafordeler.dk/GEODKV/v1" },
+                    { "display" : "HISTKORT", "value" : "https://graphql.datafordeler.dk/HISTKORT/v1" },
+                    { "display" : "MAT", "value" : "https://graphql.datafordeler.dk/MAT/v1" },
+                    { "display" : "VUR", "value" : "https://graphql.datafordeler.dk/VUR/v1" }
+                  ],
+                  "choiceSet" : "userDefined"
+                },
+                "type" : "text"
+              },
+              {
+                "name" : "PARAMETER",
+                "prompt" : "Query:",
+                "valueType" : "string",
+                "required" : false,
+                "type" : "message"
+              },
+              {
+                "name" : "___XF_QUERY",
+                "prompt" : "GraphQL Query",
+                "showPrompt" : false,
+                "valueType" : "stringEncoded",
+                "required" : true,
+                "defaultValue" : "",
+                "type" : "text",
+                "editor" : "plaintext",
+                "showInlineEditor" : true,
+                "trimWhitespace" : false,
+                "showEditButton" : false,
+                "showArithmeticEditor" : false
+              }
+            ]
+          }
+        ]
+      },
+      "executionTemplate" : [
+        "# Put config values onto input feature as internal-prefixed attributes.",
+        "FACTORY_DEF {*} TeeFactory",
+        "   FACTORY_NAME { $(XFORMER_NAME)_CATCHER }",
+        "   $(INPUT_LINES)",
+        "   OUTPUT { FEATURE_TYPE $(XFORMER_NAME)_READY",
+        "      @SupplyAttributes(___XF_VERSION, 1)",
+        "      $(FME_PARM_VAL_LIST)",
+        "   }",
+        "",
+        "# Pass input feature to Python.",
+        "# Remove all internal-prefixed attributes before emitting feature",
+        "# through the correct output port.",
+        "FACTORY_DEF {*} PythonFactory",
+        "    FACTORY_NAME { $(XFORMER_NAME) }",
+        "    INPUT { FEATURE_TYPE $(XFORMER_NAME)_READY }",
+        "    SYMBOL_NAME daf_gqlquery.transformer.TransformerImpl",
+        "    PY_OUTPUT_TAGS { Output <Rejected> }",
+        "    OUTPUT { Output FEATURE_TYPE $(OUTPUT_Output_FTYPE)",
+        "        @RemoveAttributes(fme_regexp_match,^___XF_.*$)",
+        "        $(OUTPUT_Output_FUNCS) }",
+        "    OUTPUT { <Rejected> FEATURE_TYPE $(OUTPUT_<Rejected>_FTYPE)",
+        "        @RemoveAttributes(fme_regexp_match,^___XF_.*$)",
+        "        $(OUTPUT_<Rejected>_FUNCS) }"],
+      "comments" : [ "" ],
+      "featureHolding" : "none",
+      "inputPorts" : [
+        {
+          "name" : ""
+        }
+      ],
+      "outputPorts" : [
+        {
+          "name" : "Output",
+          "attributesAdded" : [
+            {
+              "name" : "_response_body",
+              "type" : "buffer"
+            }
+          ]
+        },
+        {
+          "name" : "<Rejected>",
+          "attributesAdded" : [
+            {
+              "name" : "fme_rejection_code",
+              "type" : "buffer"
+            },
+            {
+              "name" : "fme_rejection_message",
+              "type" : "buffer"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

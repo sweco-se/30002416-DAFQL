@@ -1,0 +1,9 @@
+*.egg-info/
+*.py[co]
+.DS_Store
+__pycache__/
+.idea/
+
+# fme-packager outputs
+build/
+dist/
