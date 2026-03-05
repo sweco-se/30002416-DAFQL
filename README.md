@@ -1,13 +1,10 @@
 # GraphQL FME-Utilities for datafordeler.dk 
 
 ## Folder contents
-- demos
-  The first demos published by Sweco
+- demos: The first demos published by Sweco
 - packages/pesd.daf-query
-- webinars
-  Powerpoint presentations and FME workspaces from the different webinars held.
-- webservices
-  Web connection for use within FME
+- webinars: Powerpoint presentations and FME workspaces from the different webinars held.
+- webservices: Web connection for use within FME
 
 ## Documentation for FME Hub Transformers 
 + DAF2_SchemaInfo
